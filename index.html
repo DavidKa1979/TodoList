@@ -15,7 +15,7 @@
   <div class="container">
     <h2 class="Jumbotron text-center">Total todos: {{getTotal()}}</h2>
     <ol class="list-group">
-        <li ng-repeat='task in taskList'>
+        <li ng-repeat='task in taskList| filter: filterTodo'>
           <button type="button" ng-class='{done: task.done}' class="list-group-item list-group-item-action">
             <input type='checkbox' ng-model='task.done' />
             {{task.task}}<span  ng-click="onSelect(task)" class="close">&times;</span></button>

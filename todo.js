@@ -66,5 +66,24 @@ $scope.onSelect = function(task) {
   }
 }
 
+$scope.filterTodo = function(task) {
+  if ($scope.filterInput == 'complete' ) {
+    if (task.done) {
+      return true;
+    } else {
+      return false;
+    }
+  } else if ($scope.filterInput=='clear') {
+    if (task.done) {
+      return false;
+    } else {
+      return true;
+    }
+
+  }else { 
+    return true;
+  }
+}
+
 
 });
