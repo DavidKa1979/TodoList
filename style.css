@@ -2,6 +2,7 @@
 .done
 {
   text-decoration: line-through;
+  color: rgb(161, 161, 161)
 }
 
 .input-form
@@ -11,6 +12,16 @@
    
 }
 
-hide {
+.hide {
   display: none;
+}
+
+.innershado {
+  box-shadow: 2px 2px 8px 0px rgba(0,0,0,0.75) inset;
+  text-shadow: 3px 5px 4px rgba(28,0,255,0.6);
+  border-radius: 39px 39px 39px 39px;
+}
+
+.innershado2 {
+  border-radius: 39px 39px 39px 39px;
 }

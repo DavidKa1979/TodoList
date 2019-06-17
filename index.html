@@ -13,12 +13,12 @@
 
 <body ng-controller='TodoCtrl'>
   <div class="container">
-    <h2 class="Jumbotron text-center">Total todos: {{getTotal()}}</h2>
+    <div class="innershado2 shadow"><h2 class="Jumbotron innershado text-center mt-3 p-3">Total task List: {{getTotal()}}<div class="todo-count mt-4">{{remaining()}} of {{taskList.length}} remaining</div></h2></div>
     <ol class="list-group">
         <li ng-repeat='task in taskList| filter: filterTodo'>
-          <button type="button" ng-class='{done: task.done}' class="list-group-item list-group-item-action">
+          <button type="button" ng-mouseover="close=true" ng-mouseleave="close=false" ng-class='{done: task.done}' class="list-group-item list-group-item-action shadow p-3 mb-3 bg-white rounded-pill">
             <input type='checkbox' ng-model='task.done' />
-            {{task.task}}<span ng-click="onSelect(task)" class="close">&times;</span></button>
+            {{task.task}}<span ng-show="close" ng-click="onSelect(task)" class="close">&times;</span></button>
         </li>
     </ol>
 

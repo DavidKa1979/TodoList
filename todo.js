@@ -30,6 +30,18 @@ app.controller("TodoCtrl", function ($scope) {
     return $scope.taskList.length;
   };
 
+  $scope.remaining = function() {
+    var count = 0;
+    angular.forEach($scope.taskList, function(task) {
+      count += task.done ? 0 : 1;
+    });
+    return count;
+  };
+
+  $scope.itemText = function() {
+    return ($scope.taskList.length - $scope.remaining() > 1) ? "items" : "item";     
+};
+
   //Function for adding task to the task list
   $scope.addTask = function (task) {
     //I'm pushing a new task to the task list
@@ -50,12 +62,18 @@ app.controller("TodoCtrl", function ($scope) {
   };
 
   $scope.deleteinCompleted = function () {
+    var r = confirm("Caution: You are about to delete an incomplete task");
+    if (r==true){
     var oldList = $scope.taskList;
     $scope.taskList = [];
     angular.forEach(oldList, function (task) {
       if (task.done) $scope.taskList.push(task);
-    });
+    })
+  } else {
+    return alert("You pressed Cancel!");
+    };
   };
+
 
   $scope.deleteAll = function () {
     $scope.taskList = [];
