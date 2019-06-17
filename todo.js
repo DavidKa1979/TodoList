@@ -40,31 +40,43 @@ app.controller("TodoCtrl", function ($scope) {
     $scope.newTask = "";
   };
 
-  $scope.clear = function() {
-    var oldList = $scope.taskList;
-    $scope.taskList = [];
-    angular.forEach(oldList, function(task) {
-        if (!task.done) $scope.taskList.push(task);
-    });
-};
+//   $scope.clear = function() {
+//     var oldList = $scope.taskList;
+//     $scope.taskList = [];
+//     angular.forEach(oldList, function(task) {
+//         if (!task.done) $scope.taskList.push(task);
+//     });
+// };
+
+// $scope.completed = function() {
+//   var oldList = $scope.taskList;
+//   $scope.taskList = [];
+//   angular.forEach(oldList, function(task) {
+//       if (task.done) $scope.taskList.push(task);
+//   });
+// };
+
+$scope.all = function() {
+  $scope.filterInput= 'all'
+  }
 
 $scope.completed = function() {
-  var oldList = $scope.taskList;
-  $scope.taskList = [];
-  angular.forEach(oldList, function(task) {
-      if (task.done) $scope.taskList.push(task);
-  });
-};
-
-
-$scope.onSelect = function(task) {
-  if ($scope.selected === task) {
-    $scope.selected = null;
-  } else {
-    $scope.selected = task;
-
-  }
+  $scope.filterInput = 'complete';
 }
+
+$scope.clear = function() {
+  $scope.filterInput='clear'
+}
+
+
+
+// $scope.onSelect = function(task) {
+//   if ($scope.selected == task) {
+//     $scope.selected = null;
+//   } else {
+//     $scope.selected = task;
+//   }
+// }
 
 $scope.filterTodo = function(task) {
   if ($scope.filterInput == 'complete' ) {
@@ -80,9 +92,11 @@ $scope.filterTodo = function(task) {
       return true;
     }
 
-  }else { 
+  }else if ($scope.filterInput=='all'){ 
     return true;
   }
+
+  return true;
 }
 
 
